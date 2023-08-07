@@ -5,3 +5,15 @@ It's a tool that you can use when you're bored and want to work on something
 new.
 
 ## How it works
+
+## Development
+
+You need to have [Deno](https://deno.land/) installed on your machine.
+
+```bash
+deno task start
+```
+
+## License
+
+[MIT](./LICENSE)
