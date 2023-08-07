@@ -7,14 +7,28 @@ const prompt_text = `
 `;
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
+  async GET(req) {
+    const url = new URL(req.url);
+    const fields = url.searchParams.get("fields");
+
+    if (!fields) {
+      return new Response(
+        JSON.stringify({
+          error: "You must select some fields.",
+        }),
+        {
+          status: 400,
+        },
+      );
+    }
+
     const prompt = new PromptTemplate({
       template: prompt_text,
       inputVariables: ["field"],
     });
 
     const result = await prompt.format({
-      field: "javascript, go",
+      field: fields,
     });
 
     const res = await llm.call(

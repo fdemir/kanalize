@@ -10,7 +10,7 @@ export default function IdeaBox(props: IdeaBoxProps) {
 
   return (
     <div className="py-4 flex items-center justify-center">
-      <div className="rounded-md bg-white min-h-[350px] md:w-[600px] w-full p-8 flex flex-col justify-between">
+      <div className="rounded-md bg-white gap-8 w-full p-8 flex flex-col justify-between shadow-sm">
         <span className="text-xl font-bold flex">
           {content}
         </span>
