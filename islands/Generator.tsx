@@ -55,8 +55,7 @@ export default function Wrapper() {
         )}
         {status.value === "loading" && (
           <div className="inset-0 my-12 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-24 w-24 border-b-2 border-green-600">
-            </div>
+            <div className="animate-spin rounded-full h-24 w-24 border-b-2 border-green-600" />
           </div>
         )}
         {status.value === "error" && (
