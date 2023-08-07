@@ -61,6 +61,13 @@ export default function FieldSelect(props: FieldSelectProps) {
 
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
+          if (items.length == 0 && inputValue.value.length > 0) {
+            onChange([
+              ...selectedItems,
+              inputValue.value,
+            ]);
+            inputValue.value = "";
+          }
         case useCombobox.stateChangeTypes.ItemClick:
           return {
             ...changes,
