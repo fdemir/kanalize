@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { PromptTemplate } from "npm:langchain/prompts";
+import { PromptTemplate } from "langchain/prompts";
 import { llm } from "../../utils/llm.ts";
 
 const prompt_text = `

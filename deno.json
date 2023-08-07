@@ -23,6 +23,7 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
     "langchain": "https://esm.sh/langchain",
+    "langchain/": "https://esm.sh/langchain/",
     "downshift/preact": "https://esm.sh/downshift@8.1.0/preact?alias=preact:preact/compat&external=preact"
   },
   "compilerOptions": {
