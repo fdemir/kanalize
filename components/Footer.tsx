@@ -8,7 +8,13 @@ export default function Footer() {
         <br />
         <span className="text-gray-600">
           Check out the{" "}
-          <a className="text-underline text-green-600">Dokusearch</a>{" "}
+          <a
+            className="text-underline text-green-600"
+            href="http://dokusearch.app"
+            target="_blank"
+          >
+            Dokusearch
+          </a>{" "}
           project to talk with documents.
         </span>
       </div>
