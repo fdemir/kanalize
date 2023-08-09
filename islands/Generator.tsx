@@ -11,7 +11,7 @@ export default function Wrapper() {
   const idea = useSignal("");
   const status = useSignal<"loading" | "error" | "success" | "idle">("idle");
   const error = useSignal("");
-  const selectedFields = useSignal<string[]>(persistField || []);
+  const selectedFields = useSignal<string[]>([]);
 
   const getNewIdea = async () => {
     idea.value = "";
@@ -35,6 +35,10 @@ export default function Wrapper() {
   };
 
   useEffect(() => {
+    const persistField = getField();
+
+    selectedFields.value = persistField || [];
+
     getNewIdea();
   }, []);
 
