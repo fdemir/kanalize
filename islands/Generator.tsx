@@ -3,14 +3,15 @@ import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import FieldSelect from "./FieldSelect.tsx";
 import skills from "../utils/skills.ts";
+import { getField, setField } from "../utils/field.ts";
 
-const INITIAL_SKILLS = [skills[0], skills[1]];
+const persistField = getField();
 
 export default function Wrapper() {
   const idea = useSignal("");
   const status = useSignal<"loading" | "error" | "success" | "idle">("idle");
   const error = useSignal("");
-  const selectedFields = useSignal<string[]>(INITIAL_SKILLS);
+  const selectedFields = useSignal<string[]>(persistField || []);
 
   const getNewIdea = async () => {
     idea.value = "";
@@ -37,10 +38,15 @@ export default function Wrapper() {
     getNewIdea();
   }, []);
 
+  const handleOnFieldChange = (newFields: string[]) => {
+    selectedFields.value = newFields;
+    setField(newFields);
+  };
+
   return (
     <div className="my-8 md:w-[600px] w-full">
       <FieldSelect
-        onChange={(newFields) => selectedFields.value = newFields}
+        onChange={handleOnFieldChange}
         value={selectedFields.value}
         data={skills}
       />
