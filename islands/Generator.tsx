@@ -5,8 +5,6 @@ import FieldSelect from "./FieldSelect.tsx";
 import skills from "../utils/skills.ts";
 import { getField, setField } from "../utils/field.ts";
 
-const persistField = getField();
-
 export default function Wrapper() {
   const idea = useSignal("");
   const status = useSignal<"loading" | "error" | "success" | "idle">("idle");
