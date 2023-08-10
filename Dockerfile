@@ -1,13 +1,13 @@
-# FROM denoland/deno:1.35.0
+FROM denoland/deno:1.35.0
 
-# ARG GIT_REVISION
-# ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
+ARG GIT_REVISION
+ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY . .
-# RUN deno cache main.ts
+COPY . .
+RUN deno cache main.ts
 
-# EXPOSE 8000
+EXPOSE 8000
 
-# CMD ["run", "-A", "main.ts"]
+CMD ["run", "-A", "main.ts"]
