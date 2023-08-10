@@ -23,7 +23,7 @@ export default function IdeaBox(props: IdeaBoxProps) {
             >
               <img
                 src="/close.svg"
-                alt=""
+                alt="Dislike"
                 width={32}
                 height={32}
               />
@@ -34,7 +34,7 @@ export default function IdeaBox(props: IdeaBoxProps) {
             >
               <img
                 src="/earth.svg"
-                alt=""
+                alt="Like"
                 width={32}
                 height={32}
               />
