@@ -3,7 +3,7 @@ import { PromptTemplate } from "langchain/prompts";
 import { llm } from "../../utils/llm.ts";
 
 const prompt_text = `
-"generate open-source project idea for someone who specializing in {field}. response must be only one sentence. it can be tool, library, framework, or a product for developers."
+"Provide a concise open-source project idea tailored to an expert in {field}. The idea should be a single sentence and can encompass tools, libraries, frameworks, or developer-oriented products."
 `;
 
 export const handler: Handlers = {
