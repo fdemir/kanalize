@@ -1,5 +1,5 @@
 export const STORAGE_KEY = "fields";
-export const DEFAULT_FIELDS = ["javascript", "llm"];
+export const DEFAULT_FIELDS = ["javascript", "game", "web", "dogs"];
 
 export const getField = (): string[] => {
   try {
