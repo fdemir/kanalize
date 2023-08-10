@@ -4,11 +4,15 @@ import Body from "../components/Body.tsx";
 
 import { Handlers } from "$fresh/server.ts";
 
+const delimiter = "-project-ideas";
+
 export const handler: Handlers = {
   async GET(_req, ctx) {
     const { slug } = ctx.params;
 
-    const skill = slug ? slug.split("-")?.[0] : "";
+    const regex = new RegExp(delimiter);
+
+    const skill = slug.split(regex)[0]?.replaceAll("-", " ");
 
     const isPathCorrectPattern = /([a-z]+)-project-ideas/.test(slug);
 
