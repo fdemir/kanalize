@@ -5,7 +5,9 @@ import FieldSelect from "./FieldSelect.tsx";
 import skills from "../utils/skills.ts";
 import { getField, setField } from "../utils/field.ts";
 
-export default function Wrapper() {
+export default function Wrapper(props: {
+  defaultSkill?: string;
+}) {
   const idea = useSignal("");
   const status = useSignal<"loading" | "error" | "success" | "idle">("idle");
   const error = useSignal("");
@@ -33,10 +35,14 @@ export default function Wrapper() {
   };
 
   useEffect(() => {
-    const persistField = getField();
+    if (props.defaultSkill) {
+      selectedFields.value = [props.defaultSkill];
+      setField([props.defaultSkill]);
+    } else {
+      const persistField = getField();
 
-    selectedFields.value = persistField || [];
-
+      selectedFields.value = persistField || [];
+    }
     getNewIdea();
   }, []);
 
