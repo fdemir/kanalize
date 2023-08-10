@@ -1,5 +1,5 @@
 import skills from "../utils/skills.ts";
-import friendlyUrl from "npm:seo-friendly-urls";
+import friendlyUrl from "https://esm.sh/seo-friendly-urls@1.0.0";
 
 export default function Examples() {
   return (
