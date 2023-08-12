@@ -1,3 +1,4 @@
+// deno-lint-ignore-file ban-ts-comment ban-unused-ignore
 // @ts-nocheck
 import { useEffect } from "preact/hooks";
 
