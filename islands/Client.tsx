@@ -23,8 +23,6 @@ export default function Client() {
         src="https://www.googletagmanager.com/gtag/js?id=G-L8LSH9G9RP"
       >
       </script>
-      <script>
-      </script>
     </>
   );
 }
