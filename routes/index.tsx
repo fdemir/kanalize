@@ -2,6 +2,7 @@ import { Head } from "$fresh/runtime.ts";
 
 import Body from "../components/Body.tsx";
 import DefaultMeta from "../components/DefaultMeta.tsx";
+import Client from "../islands/Client.tsx";
 
 export default function Home() {
   return (
@@ -17,7 +18,9 @@ export default function Home() {
 
         <DefaultMeta />
       </Head>
+
       <Body />
+      <Client />
     </>
   );
 }
