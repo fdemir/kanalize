@@ -6,9 +6,12 @@ export default function Header() {
         Kanalize is a simple tool to generate open-source project ideas for
         developers. It's a tool that you can use when you're bored and want to
         work on something new. See{" "}
-        <u className="text-green-600 cursor-pointer">
+        <a
+          className="text-green-600 cursor-pointer text-underline"
+          href="#how-it-works"
+        >
           How It Works
-        </u>{" "}
+        </a>{" "}
         to learn more.
       </h2>
     </div>

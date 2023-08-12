@@ -1,6 +1,7 @@
 export default function HowItWorks() {
   return (
-    <div className="mb-10">
+    <div className="mb-32">
+      <a name="how-it-works"></a>
       <h2 className="text-2xl font-bold mb-4">How it works</h2>
       <div className="text-xl gap-4 flex flex-wrap">
         <p>
