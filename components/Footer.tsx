@@ -6,8 +6,11 @@ export default function Footer() {
           <span>Powered by OpenAI, Langchain and Fresh.</span>
           <img src="/new_logo.svg" width={90} height={20} alt="Kanalize" />
         </div>
-        <div>
-          LOGO
+        <div className="flex gap-2">
+          <a href="https://x.com/furkaneulogy" target="_blank">X/Twitter</a>
+          <a href="https://github.com/fdemir/kanalize" target="_blank">
+            Github
+          </a>
         </div>
       </div>
     </div>
