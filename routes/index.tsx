@@ -1,5 +1,5 @@
 import Shortcuts from "../components/Shortcuts.tsx";
-import Templates from "../components/Templates.tsx";
+// import Templates from "../components/Templates.tsx";
 import IdeaCard from "../islands/IdeaCard.tsx";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <div className="my-10 w-full gap-12 flex flex-col">
         <IdeaCard />
         <Shortcuts />
-        <Templates />
+        {/* <Templates /> */}
       </div>
     </div>
   );
