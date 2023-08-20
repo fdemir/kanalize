@@ -4,7 +4,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: any;
 }
 
-export default function Button({ children, className }: ButtonProps) {
+export default function Button({ children, className, ...props }: ButtonProps) {
   const mergedClass = tw`
     w-10
     h-10
@@ -22,12 +22,14 @@ export default function Button({ children, className }: ButtonProps) {
 
     ${String(className)}
   `;
+
   return (
     <button
       className={mergedClass}
       style={{
         backdropFilter: "blur(10px)",
       }}
+      {...props}
     >
       {children}
     </button>
