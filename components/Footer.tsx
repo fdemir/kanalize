@@ -1,30 +1,14 @@
 export default function Footer() {
   return (
-    <div className="py-4 flex justify-between items-center w-full">
-      <div>
-        <span>
-          Powered by OpenAI, Langchain and Fresh
-        </span>
-        <br />
-        <span className="text-gray-600">
-          Check out the{" "}
-          <a
-            className="text-underline text-green-600"
-            href="http://dokusearch.app"
-            target="_blank"
-          >
-            Dokusearch
-          </a>{" "}
-          project to talk with documents.
-        </span>
-      </div>
-      <div className="flex gap-2">
-        <a href="https://github.com/fdemir/kanalize">
-          <img src="/github.svg" className="w-8 inline-block" />
-        </a>
-        <a href="https://twitter.com/furkaneulogy" target="_blank">
-          <img src="/twitter.svg" className="w-8 inline-block" />
-        </a>
+    <div className="h-20 bg-white bg-opacity-5 w-screen border-t-white border-opacity-5 border-t">
+      <div className="container flex justify-between mx-auto items-center h-full ">
+        <div className="flex flex-col gap-3">
+          <span>Powered by OpenAI, Langchain and Fresh.</span>
+          <img src="/new_logo.svg" width={90} height={20} alt="Kanalize" />
+        </div>
+        <div>
+          LOGO
+        </div>
       </div>
     </div>
   );

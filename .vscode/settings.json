@@ -13,5 +13,11 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
-  }
+  },
+  "twind.enable": true,
+  "twind.debug": true
+  // "editor.suggest.showStatusBar": true,
+  // "editor.quickSuggestions": {
+  //   "strings": true
+  // }
 }
