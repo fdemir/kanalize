@@ -5,7 +5,7 @@ import FieldSelect from "./FieldSelect.tsx";
 import skills from "../utils/skills.ts";
 import { getField, setField } from "../utils/field.ts";
 
-export default function Wrapper(props: {
+export default function Generator(props: {
   defaultSkill?: string;
 }) {
   const idea = useSignal("");
