@@ -38,9 +38,9 @@ export default function FieldSelect() {
   };
 
   return (
-    <div className="relative w-full p-4 bg-white border-t rounded-md bg-opacity-10 border-t-white border-opacity-5 backdrop-blur-md ">
+    <div className="relative w-full bg-white border-t rounded-md bg-opacity-10 border-t-white border-opacity-5 backdrop-blur-md ">
       <div
-        className="flex flex-wrap gap-3 md:pr-[135px]"
+        className="flex flex-wrap gap-3 md:pr-[135px] p-4"
         onClick={() => inputRef.value?.focus()}
       >
         {selectedItems.value.map((item) => {
@@ -63,15 +63,17 @@ export default function FieldSelect() {
           ref={(input) => inputRef.value = input}
         />
       </div>
-      <button className="md:absolute md:w-auto w-full top-0 right-0 px-3 flex items-center justify-center h-[39px] mt-4 rounded-md border-white border-opacity-20 border-2 focus:outline-none mr-4 shadow-md text-white text-opacity-70">
-        <img
-          src="/sparkle-fill.svg"
-          width={20}
-          height={20}
-          className={"mr-3"}
-        />
-        Generate
-      </button>
+      <div className="md:p-0 p-4 pt-0">
+        <button className="md:absolute md:w-auto w-full top-0 right-0 px-3 flex items-center justify-center h-[39px] md:mt-4 rounded-md border-white border-opacity-20 border-2 focus:outline-none mr-4 shadow-md text-white text-opacity-70">
+          <img
+            src="/sparkle-fill.svg"
+            width={20}
+            height={20}
+            className={"mr-3"}
+          />
+          Generate
+        </button>
+      </div>
     </div>
   );
 }
