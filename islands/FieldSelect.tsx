@@ -4,6 +4,7 @@ import { useSignal } from "@preact/signals";
 export default function FieldSelect() {
   const fieldInput = useSignal("");
   const selectedItems = useSignal<string[]>([]);
+  const inputRef = useSignal<HTMLInputElement | null>(null);
 
   useEffect(() => {});
 
@@ -37,8 +38,11 @@ export default function FieldSelect() {
   };
 
   return (
-    <div className="relative w-full p-4 bg-white border-t rounded-md bg-opacity-10 border-t-white border-opacity-5 backdrop-blur-md md:pr-[135px]">
-      <div className="flex flex-wrap gap-3">
+    <div className="relative w-full p-4 bg-white border-t rounded-md bg-opacity-10 border-t-white border-opacity-5 backdrop-blur-md ">
+      <div
+        className="flex flex-wrap gap-3 md:pr-[135px]"
+        onClick={() => inputRef.value?.focus()}
+      >
         {selectedItems.value.map((item) => {
           return (
             <span
@@ -56,18 +60,18 @@ export default function FieldSelect() {
           onInput={handleInputChange}
           onKeyPress={handleKeyPress}
           value={fieldInput.value}
+          ref={(input) => inputRef.value = input}
         />
-
-        <button className="md:absolute md:w-auto w-full top-0 right-0 px-3 flex items-center justify-center h-[39px] mt-4 rounded-md border-white border-opacity-20 border-2 focus:outline-none mr-4 shadow-md text-white text-opacity-70">
-          <img
-            src="/sparkle-fill.svg"
-            width={20}
-            height={20}
-            className={"mr-3"}
-          />
-          Generate
-        </button>
       </div>
+      <button className="md:absolute md:w-auto w-full top-0 right-0 px-3 flex items-center justify-center h-[39px] mt-4 rounded-md border-white border-opacity-20 border-2 focus:outline-none mr-4 shadow-md text-white text-opacity-70">
+        <img
+          src="/sparkle-fill.svg"
+          width={20}
+          height={20}
+          className={"mr-3"}
+        />
+        Generate
+      </button>
     </div>
   );
 }
