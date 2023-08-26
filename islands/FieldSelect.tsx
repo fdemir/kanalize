@@ -31,6 +31,18 @@ export default function FieldSelect() {
     }
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const isRemoveAction = event.key === "Backspace" || event.key === "Delete";
+    const isInputEmpty = fieldInput.value.length === 0;
+
+    if (isRemoveAction && isInputEmpty) {
+      const newSelectedItems = [...selectedItems.value];
+      newSelectedItems.pop();
+
+      selectedItems.value = newSelectedItems;
+    }
+  };
+
   const removeItem = (item: string) => {
     selectedItems.value = selectedItems.value.filter(
       (i) => i !== item,
@@ -59,6 +71,7 @@ export default function FieldSelect() {
           className="p-0 text-sm text-white bg-transparent border-0 outline-none placeholder:text-white placeholder:text-opacity-20 text-opacity-70 min-h-[39px]"
           onInput={handleInputChange}
           onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
           value={fieldInput.value}
           ref={(input) => inputRef.value = input}
         />
