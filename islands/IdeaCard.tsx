@@ -19,12 +19,19 @@ export default function IdeaCard(props: IdeaProps) {
         </Button>
       </div>
 
-      <Button className="absolute -left-5 top-1/2 transform -translate-y-1/2 hover:-translate-x-1">
+      <Button className="absolute -left-5 top-1/2 transform -translate-y-1/2 hover:-translate-x-1 bg- md:flex !hidden">
         <img src="/arrow.svg" width={20} height={20} alt="" />
       </Button>
 
-      <Button className="absolute -right-5 top-1/2 transform -translate-y-1/2 hover:translate-x-1 rotate-180">
-        <img src="/arrow.svg" width={20} height={20} alt="" />
+      <Button className="absolute -right-5 top-1/2 transform -translate-y-1/2 hover:translate-x-1 items-end md:flex !hidden">
+        <span className="rotate-180">
+          <img
+            src="/arrow.svg"
+            width={20}
+            height={20}
+            alt=""
+          />
+        </span>
       </Button>
     </div>
   );
