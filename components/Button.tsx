@@ -1,6 +1,7 @@
+import { JSX } from "preact";
 import { tw } from "twind";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   children: any;
 }
 
