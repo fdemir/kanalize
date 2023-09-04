@@ -25,3 +25,8 @@
 
 } 
 
+
+
+body {
+  overflow-x: hidden;
+}

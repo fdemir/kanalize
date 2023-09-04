@@ -8,9 +8,7 @@ export default function IdeaCard(props: IdeaProps) {
   return (
     <div className="w-full bg-white bg-opacity-10 rounded-md min-h-[160px] px-8 py-6 relative border-t-white border-opacity-5 border-t backdrop-blur-md ">
       <p className="pb-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facilis,
-        nisi eos dolores ipsa vel sequi, minus animi officia ut ducimus maiores
-        quasi dolorum, aliquam accusamus reprehenderit! Ab, repellat numquam!
+        {props.content}
       </p>
       <div className="flex justify-end gap-3">
         <Button>

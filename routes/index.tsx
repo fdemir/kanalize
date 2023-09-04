@@ -1,9 +1,7 @@
-import Shortcuts from "../components/Shortcuts.tsx";
 import FieldSelect from "../islands/FieldSelect.tsx";
+import Result from "../islands/Result.tsx";
 // import Generator from "../islands/Generator.tsx";
 // import Templates from "../components/Templates.tsx";
-import IdeaCard from "../islands/IdeaCard.tsx";
-import skills from "../utils/skills.ts";
 
 export default function Home() {
   return (
@@ -14,8 +12,9 @@ export default function Home() {
         <div>
           <FieldSelect />
         </div>
-        <IdeaCard />
-        <Shortcuts />
+
+        <Result />
+
         {/* <Templates /> */}
       </div>
     </div>
