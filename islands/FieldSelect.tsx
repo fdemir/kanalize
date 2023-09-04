@@ -1,178 +1,103 @@
-// deno-lint-ignore-file no-fallthrough
+import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
-import { useMemo } from "preact/hooks";
-import { useCombobox, useMultipleSelection } from "downshift/preact";
 
-interface FieldSelectProps {
-  onChange: (newFields: string[]) => void;
-  data: string[];
-  value: string[];
-}
+import { fields, generating, genIdea, idea } from "../utils/idea.ts";
 
-export default function FieldSelect(props: FieldSelectProps) {
-  const { onChange, value, data } = props;
-  const selectedItems = value;
-  const inputValue = useSignal("");
+export default function FieldSelect() {
+  const fieldInput = useSignal("");
+  const inputRef = useSignal<HTMLInputElement | null>(null);
 
-  const items = useMemo(
-    () =>
-      data.filter((item) =>
-        !selectedItems.includes(item) &&
-        item.includes(inputValue.value.toLowerCase())
-      ),
-    [inputValue.value, selectedItems],
-  );
+  useEffect(() => {});
 
-  const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
-    useMultipleSelection({
-      selectedItems: selectedItems,
-      onStateChange({ selectedItems: newSelectedItems, type }) {
-        switch (type) {
-          case useMultipleSelection.stateChangeTypes
-            .SelectedItemKeyDownBackspace:
-          case useMultipleSelection.stateChangeTypes
-            .SelectedItemKeyDownDelete:
-          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-          case useMultipleSelection.stateChangeTypes
-            .FunctionRemoveSelectedItem:
-            onChange(newSelectedItems as string[]);
-            break;
-          default:
-            break;
-        }
-      },
-    });
+  const handleInputChange = (event: {
+    target: { value: string };
+  }) => {
+    fieldInput.value = event.target.value;
+  };
 
-  const {
-    isOpen,
-    getLabelProps,
-    getMenuProps,
-    getInputProps,
-    highlightedIndex,
-    getItemProps,
-    selectedItem,
-  } = useCombobox({
-    items,
-    defaultHighlightedIndex: 0,
-    selectedItem: null,
-    inputValue: inputValue.value,
-    stateReducer(state, actionAndChanges) {
-      const { changes, type } = actionAndChanges;
+  const handleKeyPress = (event: KeyboardEvent) => {
+    const validations = [
+      event.key === "Enter",
+      fieldInput.value.length > 0,
+      fieldInput.value.length < 100,
+    ];
+    const isValidAction = validations.every(Boolean);
+    const newItemExists = fields.value.includes(fieldInput.value);
 
-      switch (type) {
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
-          if (items.length == 0 && inputValue.value.length > 0) {
-            onChange([
-              ...selectedItems,
-              inputValue.value,
-            ]);
-            inputValue.value = "";
-          }
-        case useCombobox.stateChangeTypes.ItemClick:
-          return {
-            ...changes,
-            isOpen: true,
-            highlightedIndex: 0,
-          };
-        default:
-          return changes;
-      }
-    },
-    onStateChange({
-      inputValue: newInputValue,
-      type,
-      selectedItem: newSelectedItem,
-    }) {
-      switch (type) {
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.ItemClick:
-        case useCombobox.stateChangeTypes.InputBlur:
-          if (newSelectedItem) {
-            inputValue.value = "";
+    if (isValidAction && !newItemExists) {
+      fields.value = [
+        ...fields.value,
+        fieldInput.value,
+      ];
+      fieldInput.value = "";
+    }
+  };
 
-            onChange([
-              ...selectedItems,
-              newSelectedItem,
-            ]);
-          }
-          break;
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const isRemoveAction = event.key === "Backspace" || event.key === "Delete";
+    const isInputEmpty = fieldInput.value.length === 0;
 
-        case useCombobox.stateChangeTypes.InputChange:
-          inputValue.value = newInputValue as string;
-          break;
-      }
-    },
-  });
+    if (isRemoveAction && isInputEmpty) {
+      const newfields = [...fields.value];
+      newfields.pop();
+
+      fields.value = newfields;
+    }
+  };
+
+  const removeItem = (item: string) => {
+    fields.value = fields.value.filter(
+      (i) => i !== item,
+    );
+  };
+
+  const handleGen = async () => {
+    const data = await genIdea(fields.value);
+    idea.value = data.result;
+  };
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col gap-1">
-        <label className="w-fit text-gray-600" {...getLabelProps()}>
-          Add a programming language or field to generate more relevant idea
-        </label>
-        <div className="shadow-sm rounded-md bg-white inline-flex gap-2 items-center flex-wrap p-4">
-          {selectedItems.map((
-            item,
-            index,
-          ) => (
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                removeSelectedItem(item);
-              }}
-              className="cursor-pointer"
-            >
-              <span
-                className="rounded-full bg-green-600 text-white font-semibold px-2 py-1 flex items-center gap-1"
-                key={`selected-item-${index}`}
-                {...getSelectedItemProps({
-                  selectedItem: item,
-                  index,
-                })}
-              >
-                {item}
-                <span className="px-1 cursor-pointer">
-                  &#10005;
-                </span>
-              </span>
-            </div>
-          ))}
-
-          <input
-            placeholder="Add a programming language or field"
-            className="w-full outline-none"
-            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
-          />
-        </div>
-      </div>
-      <ul
-        className={`absolute w-inherit bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
-          !(isOpen && items.length) && "hidden"
-        }`}
-        {...getMenuProps()}
+    <div className="relative w-full bg-white border-t rounded-md bg-opacity-10 border-t-white border-opacity-5 backdrop-blur-md ">
+      <div
+        className="flex flex-wrap gap-3 md:pr-[135px] p-4"
+        onClick={() => inputRef.value?.focus()}
       >
-        {isOpen &&
-          items.map((item, index) => (
-            <li
-              key={`${item}${index}`}
-              className={`py-2 px-3 shadow-sm flex flex-col
-              ${
-                highlightedIndex === index
-                  ? "bg-gray-100"
-                  : "bg-white hover:bg-gray-100"
-              }
-              ${
-                selectedItem === item
-                  ? "bg-gray-100"
-                  : "bg-white hover:bg-gray-100"
-              }
-              `}
-              {...getItemProps({ item, index })}
+        {fields.value.map((item) => {
+          return (
+            <span
+              className="px-3 py-2 text-sm text-white bg-white rounded-md shadow-sm cursor-pointer text-opacity-70 bg-opacity-10"
+              onClick={() => removeItem(item)}
             >
-              <span className="text-sm text-gray-700">{item}</span>
-            </li>
-          ))}
-      </ul>
+              {item}
+            </span>
+          );
+        })}
+        <input
+          type="text"
+          placeholder="Type field or skill..."
+          className="p-0 text-sm text-white bg-transparent border-0 outline-none placeholder:text-white placeholder:text-opacity-20 text-opacity-70 min-h-[39px]"
+          onInput={handleInputChange}
+          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
+          value={fieldInput.value}
+          ref={(input) => inputRef.value = input}
+        />
+      </div>
+      <div className="md:p-0 p-4 pt-0">
+        <button
+          className="md:absolute md:w-auto w-full top-0 right-0 px-3 flex disabled:opacity-50 items-center justify-center h-[39px] md:mt-4 rounded-md border-white border-opacity-20 border-2 focus:outline-none mr-4 shadow-md text-white text-opacity-70"
+          onClick={handleGen}
+          disabled={generating.value}
+        >
+          <img
+            src="/sparkle-fill.svg"
+            width={20}
+            height={20}
+            className={"mr-3"}
+          />
+          Generate
+        </button>
+      </div>
     </div>
   );
 }

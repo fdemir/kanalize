@@ -3,13 +3,14 @@ import { PromptTemplate } from "langchain/prompts";
 import { llm } from "../../utils/llm.ts";
 
 const prompt_text = `
-"Provide a concise open-source project idea tailored to an expert in {field}. The idea should be a single sentence and can encompass tools, libraries, frameworks, or developer-oriented products."
+"Generate a innovative startup idea in any bussiness type, it can be random. The user wants to create helpful products. It can be on any field, sector, and business, but it must be a software solution. It must be only one or two sentence. Concise idea. Simple and easy to understand. The maker expertises in the {field}. Don't use the field in sentence.
+ You can use one of them to add extra context, deep dive if needed: animals, foods, people, programmers, algorithms, art, logic, music, producers, science
+"
 `;
 
 export const handler: Handlers = {
-  async GET(req) {
-    const url = new URL(req.url);
-    const fields = url.searchParams.get("fields");
+  async POST(req) {
+    const { fields } = await req.json();
 
     if (!fields) {
       return new Response(

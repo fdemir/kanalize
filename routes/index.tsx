@@ -1,26 +1,22 @@
-import { Head } from "$fresh/runtime.ts";
-
-import Body from "../components/Body.tsx";
-import DefaultMeta from "../components/DefaultMeta.tsx";
-import Client from "../islands/Client.tsx";
+import FieldSelect from "../islands/FieldSelect.tsx";
+import Result from "../islands/Result.tsx";
+// import Generator from "../islands/Generator.tsx";
+// import Templates from "../components/Templates.tsx";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>
-          Open Source Project ideas powered by AI
-        </title>
-        <meta
-          name="description"
-          content="Kanalize is a simple tool to generate open-source project ideas for developers. It's a tool that you can use when you're bored and want to work on something new. "
-        />
+    <div className="flex flex-col items-center w-full">
+      <img src="/new_logo.svg" width={208} height={27} alt="Kanalize" />
 
-        <DefaultMeta />
-      </Head>
+      <div className="flex flex-col w-full gap-12 my-10">
+        <div>
+          <FieldSelect />
+        </div>
 
-      <Body />
-      <Client />
-    </>
+        <Result />
+
+        {/* <Templates /> */}
+      </div>
+    </div>
   );
 }

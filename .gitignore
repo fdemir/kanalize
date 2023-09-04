@@ -4,3 +4,8 @@
 .env.test.local
 .env.production.local
 .env.local
+
+
+# TODO:
+# this is a workaround for vscode intellisense: see: https://github.com/denoland/fresh/issues/1519
+tailwind.config.ts

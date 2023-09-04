@@ -12,10 +12,13 @@
         "fresh",
         "recommended"
       ]
-    }
+    },
+    "exclude": [
+      "_fresh"
+    ]
   },
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.4.1/",
+    "$fresh/": "https://deno.land/x/fresh@1.4.2/",
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
@@ -31,5 +34,10 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "fmt": {
+    "exclude": [
+      "_fresh"
+    ]
   }
 }
