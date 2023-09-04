@@ -9,8 +9,9 @@ export default function FieldSelect() {
 
   useEffect(() => {});
 
-  // TODO: type event
-  const handleInputChange = (event: any) => {
+  const handleInputChange = (event: {
+    target: { value: string };
+  }) => {
     fieldInput.value = event.target.value;
   };
 

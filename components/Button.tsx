@@ -2,7 +2,7 @@ import { JSX } from "preact";
 import { tw } from "twind";
 
 interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
-  children: any;
+  children: JSX.Element;
 }
 
 export default function Button({ children, className, ...props }: ButtonProps) {
