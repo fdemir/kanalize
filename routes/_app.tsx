@@ -1,6 +1,8 @@
 import { AppProps } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
 // import Banner from "../components/Banner.tsx";
 import Footer from "../components/Footer.tsx";
+import DefaultMeta from "../components/DefaultMeta.tsx";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -12,6 +14,8 @@ export default function App({ Component }: AppProps) {
         rel="stylesheet"
       />
       <link rel="stylesheet" href="main.css" />
+      <DefaultMeta />
+
       <div>
         <div className="bg-gradient" />
 
