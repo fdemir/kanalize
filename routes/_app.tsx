@@ -1,4 +1,5 @@
 import { AppProps } from "$fresh/server.ts";
+// import Banner from "../components/Banner.tsx";
 import Footer from "../components/Footer.tsx";
 
 export default function App({ Component }: AppProps) {
@@ -15,6 +16,7 @@ export default function App({ Component }: AppProps) {
         <div className="bg-gradient" />
 
         <div className="z-10 absolute w-screen text-opacity-80 text-white">
+          {/* <Banner /> */}
           <div className="container mx-auto py-36 flex flex-col  min-h-screen">
             <Component />
           </div>
