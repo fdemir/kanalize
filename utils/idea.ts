@@ -23,3 +23,7 @@ export const genIdea = async (input: string[]) => {
     generating.value = false;
   }
 };
+
+export const setIdea = (newIdea: string) => {
+  idea.value = newIdea;
+};

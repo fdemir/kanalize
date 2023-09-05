@@ -1,4 +1,4 @@
-import { fields, genIdea } from "../utils/idea.ts";
+import { fields, genIdea, idea, setIdea } from "../utils/idea.ts";
 
 const field_list = [
   {
@@ -46,9 +46,10 @@ const field_list = [
 ];
 
 export default function Templates() {
-  const handleTemplateClick = (skills: string[]) => {
+  const handleTemplateClick = async (skills: string[]) => {
     fields.value = skills;
-    genIdea(skills);
+    const data = await genIdea(skills);
+    setIdea(data.result);
   };
 
   return (

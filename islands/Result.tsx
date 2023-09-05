@@ -6,7 +6,7 @@ export default function Result() {
   return (
     <>
       {generating.value && <span>Generating...</span>}
-      {idea.value
+      {idea.value && !generating.value
         ? <IdeaCard content={idea.value} />
         : (
           <div className="font-italic ">
