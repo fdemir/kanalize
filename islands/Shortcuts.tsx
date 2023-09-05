@@ -1,4 +1,6 @@
 import { isMobile } from "https://deno.land/x/is_mobile@v1.0.0/mod.ts";
+import { useEffect } from "preact/hooks";
+import { fields, genIdea } from "../utils/idea.ts";
 
 const shortcuts = {
   desktop: [
@@ -35,6 +37,34 @@ const shortcuts = {
 export default function Shortcuts() {
   const isMobileDevice = isMobile(navigator.userAgent);
   const shortcut = isMobileDevice ? shortcuts.mobile : shortcuts.desktop;
+
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      const focus = document.activeElement?.tagName == "INPUT";
+
+      if (focus) {
+        return;
+      }
+
+      switch (event.key) {
+        case "i":
+          document.getElementById("how-it-works")?.scrollIntoView();
+          break;
+        case "ArrowLeft":
+          genIdea(fields.value);
+          break;
+        case "ArrowRight":
+          genIdea(fields.value);
+          break;
+      }
+    };
+
+    document.addEventListener("keydown", handleKeydown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
 
   return (
     <div className="gap-1 flex text-opacity-50 w-full items-center justify-center select-none flex-wrap">

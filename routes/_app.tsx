@@ -23,7 +23,7 @@ export default function App({ Component }: AppProps) {
 
         <div className="z-10 absolute w-screen text-opacity-80 text-white">
           {/* <Banner /> */}
-          <div className="container mx-auto py-36 flex flex-col  min-h-screen">
+          <div className="container md:mx-auto py-36 flex flex-col  min-h-screen">
             <Component />
           </div>
           <Footer />
