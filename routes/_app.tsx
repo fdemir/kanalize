@@ -14,7 +14,9 @@ export default function App({ Component }: AppProps) {
         rel="stylesheet"
       />
       <link rel="stylesheet" href="main.css" />
-      <DefaultMeta />
+      <Head>
+        <DefaultMeta />
+      </Head>
 
       <div>
         <div className="bg-gradient" />

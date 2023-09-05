@@ -1,6 +1,9 @@
 export default function DefaultMeta() {
   return (
     <>
+      <title>
+        Kanalize - Open Source Project ideas powered by AI
+      </title>
       <meta name="twitter:site" content="@furkaneulogy" />
       <meta name="twitter:creator" content="@furkaneulogy" />
       <meta
