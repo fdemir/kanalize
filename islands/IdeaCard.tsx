@@ -16,7 +16,7 @@ export default function IdeaCard(props: IdeaProps) {
   };
 
   return (
-    <div className="w-full bg-white bg-opacity-10 rounded-md min-h-[160px] px-8 py-6 relative border-t-white border-opacity-5 border-t backdrop-blur-md ">
+    <div className="w-full bg-white bg-opacity-10 rounded-md min-h-[160px] px-8 py-6 relative border-t-white border-opacity-5 border-t backdrop-blur-md   flex flex-col justify-between">
       <p className="pb-3">
         {props.content}
       </p>
