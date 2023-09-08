@@ -1,6 +1,7 @@
 import HowItWorks from "../components/HowItWorks.tsx";
 import FieldSelect from "../islands/FieldSelect.tsx";
 import Result from "../islands/Result.tsx";
+import Saved from "../islands/Saved.tsx";
 import Templates from "../islands/Templates.tsx";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Result />
         <Templates />
       </div>
+      <Saved />
       <HowItWorks />
     </div>
   );

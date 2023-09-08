@@ -14,8 +14,9 @@ import * as $$3 from "./islands/Generator.tsx";
 import * as $$4 from "./islands/IdeaBox.tsx";
 import * as $$5 from "./islands/IdeaCard.tsx";
 import * as $$6 from "./islands/Result.tsx";
-import * as $$7 from "./islands/Shortcuts.tsx";
-import * as $$8 from "./islands/Templates.tsx";
+import * as $$7 from "./islands/Saved.tsx";
+import * as $$8 from "./islands/Shortcuts.tsx";
+import * as $$9 from "./islands/Templates.tsx";
 
 const manifest = {
   routes: {
@@ -33,8 +34,9 @@ const manifest = {
     "./islands/IdeaBox.tsx": $$4,
     "./islands/IdeaCard.tsx": $$5,
     "./islands/Result.tsx": $$6,
-    "./islands/Shortcuts.tsx": $$7,
-    "./islands/Templates.tsx": $$8,
+    "./islands/Saved.tsx": $$7,
+    "./islands/Shortcuts.tsx": $$8,
+    "./islands/Templates.tsx": $$9,
   },
   baseUrl: import.meta.url,
 };

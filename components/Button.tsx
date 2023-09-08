@@ -17,7 +17,6 @@ export default function Button({ children, className, ...props }: ButtonProps) {
     transition
     duration-300
     border-white border-opacity-5 border 
-    bg-opacity-10
     text-white
     text-opacity-50
 
