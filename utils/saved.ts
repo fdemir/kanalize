@@ -6,8 +6,15 @@ interface SavedItem {
 }
 
 export const saved = signal<SavedItem[]>(
-  JSON.parse(localStorage.getItem("saved") || "[]"),
+  [],
 );
+
+effect(() => {
+  const savedItems = localStorage.getItem("saved");
+  if (savedItems) {
+    saved.value = JSON.parse(savedItems);
+  }
+});
 
 effect(() => {
   localStorage.setItem("saved", JSON.stringify(saved.value));
