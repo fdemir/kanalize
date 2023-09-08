@@ -1,11 +1,13 @@
 import { Handlers } from "$fresh/server.ts";
 import { PromptTemplate } from "langchain/prompts";
 import { llm } from "../../utils/llm.ts";
+import { sectors } from "../../utils/sectors.ts";
 
 const prompt_text = `
-"Generate a innovative startup idea in any bussiness type, it can be random. The user wants to create helpful products. It can be on any field, sector, and business, but it must be a software solution. It must be only one or two sentence. Concise idea. Simple and easy to understand. The maker expertises in the {field}. Don't use the field in sentence.
- You can use one of them to add extra context, deep dive if needed: animals, foods, people, programmers, algorithms, art, logic, music, producers, science
-"
+  Generate an project idea for a {field}. 
+  The response must be easy to understand, one sentence, concise, and actionable. 
+  Use simple words.
+  If the user doesn't provide a specific sector, then you can choose {sector}.
 `;
 
 export const handler: Handlers = {
@@ -25,11 +27,14 @@ export const handler: Handlers = {
 
     const prompt = new PromptTemplate({
       template: prompt_text,
-      inputVariables: ["field"],
+      inputVariables: ["field", "sector"],
     });
+
+    const randomSector = sectors[Math.floor(Math.random() * sectors.length)];
 
     const result = await prompt.format({
       field: fields,
+      sector: randomSector,
     });
 
     const res = await llm.call(
