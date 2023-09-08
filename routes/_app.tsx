@@ -3,6 +3,7 @@ import { Head } from "$fresh/runtime.ts";
 // import Banner from "../components/Banner.tsx";
 import Footer from "../components/Footer.tsx";
 import DefaultMeta from "../components/DefaultMeta.tsx";
+import Client from "../islands/Client.tsx";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -29,6 +30,8 @@ export default function App({ Component }: AppProps) {
           <Footer />
         </div>
       </div>
+
+      <Client />
     </>
   );
 }
