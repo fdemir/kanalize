@@ -47,6 +47,7 @@ export default function Shortcuts() {
       }
       let data;
 
+      // TODO: refactor, error handling
       switch (event.key) {
         case "i":
           document.getElementById("how-it-works")?.scrollIntoView();
@@ -59,7 +60,9 @@ export default function Shortcuts() {
           break;
       }
 
-      setIdea(data.result);
+      if (data) {
+        setIdea(data.result);
+      }
     };
 
     document.addEventListener("keydown", handleKeydown);
